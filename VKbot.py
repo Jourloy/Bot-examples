@@ -20,6 +20,13 @@ class Logging():
         if Settings.LOGGING:
             print('> Бот получил сообщение')
 
+    def Understand(self):
+        if Settings.LOGGING:
+            print('> Бот получил сообщение, но не нашел такой команды у себя')
+
+    def UnderstandMessage(self):
+        return 'Я не совсем понял, что Вы хотели сказать'
+
 class Utils():
     def __init__(self):
         pass
