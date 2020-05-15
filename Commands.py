@@ -12,12 +12,12 @@ class Commands():
             hello = ['Привет', 'Хай', 'Здрасте', 'Приветули']
             number = random.randint(0, len(hello) - 1)
 
-            return hello(number)
+            return hello[number]
         elif userText.lower() == 'спасибо':
             welcome = ['На здоровье', 'Всегда пожалуйста', 'Не за что :)', 'Всегда рад помочь']
             number = random.randint(0, len(hello) - 1)
 
-            return hello(number)
+            return welcome[number]
         elif userText.lower() == 'придумай пароль':
             count = random.randint(12, 18)
             Password = "Ваш пароль: "

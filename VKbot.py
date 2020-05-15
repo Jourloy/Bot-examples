@@ -40,14 +40,11 @@ class PreStart():
         if (Settings.GROUP_TOKEN == None):
             print('Отсутствует токен группы. Его необходимо вставить в файл настроек. Процесс завершен')
             exit()
-        if (Settings.ADMIN_ID == None):
-            print('Отсутствует id администратора группы. Его необходимо вставить в файл настроек. Процесс завершен')
-            exit()
 
 class VKbot():
     def __init__(self):
         self.log = Logging()
-        self.commands = Commands()
+        self.commands = Commands.Commands()
 
     def Connect(self):
         try:
@@ -104,5 +101,5 @@ if __name__ == "__main__":
     PreStart.CheckSettings()
     try:
         VKbot.Connect()
-    except Exception:
-        print('\nПроцесс завершен')
+    except Exception as e:
+        print("""\nПроцесс завершен\n\nПодробности ошибки:\n----------------------------------------------------\n{}""".format(e))
