@@ -1,4 +1,4 @@
-
+JS/node_modules
 *.code-workspace
 *.pyc
 .DS_Store
