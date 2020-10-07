@@ -1,0 +1,14 @@
+{
+  "name": "vkbot",
+  "version": "1.0.0",
+  "description": "Bot for vk based on javascript",
+  "main": "/src/index.js",
+  "scripts": {
+    "test": "node src/index.js"
+  },
+  "author": "JOURLOY",
+  "license": "ISC",
+  "dependencies": {
+    "node-vk-bot-api": "^3.3.7"
+  }
+}
