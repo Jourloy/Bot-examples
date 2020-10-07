@@ -18,11 +18,11 @@ class Logging():
 
     def GetText(self):
         if Settings.LOGGING:
-            print('> Бот получил сообщение')
+            print('[LOG] > Bot get request')
 
     def Understand(self):
         if Settings.LOGGING:
-            print('> Бот получил сообщение, но не нашел такой команды у себя')
+            print('[LOG] > Bot get request, but didn\'n find answer')
 
     def UnderstandMessage(self):
         return 'Я не совсем понял, что Вы хотели сказать'
@@ -42,10 +42,11 @@ class PreStart():
         pass
 
     def CheckSettings(self):
-        print('Проверка параметров')
+        if Settings.LOGGING:
+            print('[LOG] > Check settings')
 
         if (Settings.GROUP_TOKEN == None):
-            print('Отсутствует токен группы. Его необходимо вставить в файл настроек. Процесс завершен')
+            print('[ERROR] > Need group token')
             exit()
 
 class VKbot():
@@ -60,21 +61,22 @@ class VKbot():
             vk = vk_session.get_api()
             longpoll = VkLongPoll(vk_session)
         except Exception:
-            print("""Произошла ошибка при подключении к ВКонтакте.
+            print("""[ERROR] > Error with connect to VK.com.
 
-Что можно попробовать сделать:
-1. Проверьте токен группы в файле настроек. Он должен выглядеть подобно этому:
+What you can:
+1. Check group token in settings. For example:
    GROUP_TOKEN = "a1s2d3f4g5h6j7k8l9"
 
-2. Проверьте подключение к Интернет. Оно должно быть стабильное и желательно не меньше 1 Мбит/сек
+2. Check Ethernet connection.
 
-3. Возможно ВКонтакте не отвечает на данный момент. Попробуйте чуть позже
+3. Maybe VK.com is not work now, try later.
 
-Подробности ошибки:
+More info about error:
 ----------------------------------------------------
 {}""".format(Exception))
         else:
-            print("Бот включен и находится в активном состоянии")
+            if Settings.LOGGING:
+                print("[LOG] > Bot on and ready")
             self.Start(longpoll, vk)
     
     def Start(self, longpoll, vk):
